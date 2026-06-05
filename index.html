@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CGPA Calculator</title>
+    <!-- Google Fonts: Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h1>CGPA Calc</h1>
+            </div>
+        </header>
+
+        <main id="pdf-content">
+            <!-- Setup Section -->
+            <section id="setup-section" class="glass-card fade-in">
+                <h2>Welcome! 👋</h2>
+                <p>Let's set up your calculator.</p>
+                <div class="input-group">
+                    <label for="department-select">Select Department</label>
+                    <div class="input-with-icon">
+                        <i class="fa-solid fa-building-columns"></i>
+                        <select id="department-select" style="width: 100%; padding: 14px 16px 14px 45px; border-radius: var(--border-radius-md); border: 1px solid var(--input-border); background: var(--input-bg); color: var(--text-primary); font-size: 1rem; outline: none; transition: var(--transition); appearance: none;">
+                            <option value="BCA" selected>BCA</option>
+                            <option value="B.Sc AI">B.Sc AI</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="initial-subjects">Number of Subjects</label>
+                    <div class="input-with-icon">
+                        <i class="fa-solid fa-book"></i>
+                        <input type="number" id="initial-subjects" min="1" max="20"  autofocus>
+                    </div>
+                    <span class="error-text" id="setup-error"></span>
+                </div>
+                <button id="btn-generate" class="primary-btn">
+                    Generate Fields <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </section>
+
+
+
+            <!-- Calculator Section -->
+            <section id="calculator-section" class="glass-card hidden">
+                <div class="calc-header">
+                    <h2>Enter Your Grades</h2>
+                    <button id="btn-add-subject" class="secondary-btn small-btn">
+                        <i class="fa-solid fa-plus"></i> Add Subject
+                    </button>
+                </div>
+                
+                <div id="subjects-container">
+                    <!-- Dynamic subjects will be injected here -->
+                </div>
+
+                <div class="action-buttons">
+                    <button id="btn-reset" class="secondary-btn">
+                        <i class="fa-solid fa-rotate-left"></i> Reset
+                    </button>
+                    <button id="btn-calculate" class="primary-btn">
+                        <i class="fa-solid fa-calculator"></i> Calculate CGPA
+                    </button>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section id="results-section" class="glass-card hidden">
+                <h2>Your Results 🎓</h2>
+                <div class="results-grid">
+                    <div class="result-box primary">
+                        <h3>CGPA</h3>
+                        <div class="value" id="res-cgpa">0.00</div>
+                    </div>
+                    <div class="result-box secondary d-none">
+                        <h3>Total Credits</h3>
+                        <div class="value" id="res-credits">0</div>
+                    </div>
+
+                </div>
+                <div class="performance-message" id="res-message">
+                    <!-- Performance message injected here -->
+                </div>
+                
+                <div class="result-actions">
+                    <button id="btn-recalculate" class="secondary-btn">
+                        <i class="fa-solid fa-pen-to-square"></i> Edit Grades
+                    </button>
+                    <button id="btn-download-pdf" class="primary-btn" style="background-color: #10b981; color: white; box-shadow: 0 4px 14px 0 rgba(16, 185, 129, 0.39);">
+                        <i class="fa-solid fa-file-pdf"></i> Download PDF
+                    </button>
+                    <button id="btn-new-calc" class="primary-btn">
+                        <i class="fa-solid fa-calculator"></i> Calculator
+                    </button>
+                </div>
+            </section>
+        </main>
+        
+
+        <footer>
+            <p>Built with <i class="fa-solid fa-heart"></i> for students.</p>
+        </footer>
+    </div>
+    
+    <!-- Hidden container for PDF export -->
+    <div id="pdf-report-container" class="pdf-export-mode hidden" style="width: 210mm; padding: 20mm; box-sizing: border-box;">
+        <pre id="pdf-report-content"></pre>
+    </div>
+
+    <!-- html2pdf for PDF generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>
