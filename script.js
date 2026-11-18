@@ -41,7 +41,14 @@ document.addEventListener('DOMContentLoaded', () => {
             "Practical : Python": 3,
             "Data Structure and Algorithms": 3,
             "Practical : Data Structure and Algorithms": 2,
-            "Software Engineering": 2
+            "Software Engineering": 2,
+            "Net Programming using C#": 5,
+            "PHP Programming": 5,
+            "Practical : Net Programming using C#": 5,
+            "Practical : PHP Programming": 5,
+            "Operating Systems and LINUX": 3,
+            "Practical : LINUX": 3,
+            "Internship ": 2
         },
         "B.Sc AI": {
             "C++": 5,
